@@ -1,0 +1,21 @@
+- job:
+    block-downstream: false
+    block-upstream: false
+    builders:
+    - maven-target:
+        global-settings: jenkins.mvn.DefaultGlobalSettingsProvider
+        goals: clean install
+        private-repository: false
+        settings: jenkins.mvn.DefaultSettingsProvider
+    concurrent: false
+    disabled: false
+    name: test
+    project-type: freestyle
+    publishers: []
+    scm:
+    - git:
+        branches:
+        - '*/master'
+        url: https://github.com/Pnirkhee/maven-hello-world.git
+    triggers: []
+    wrappers: []
